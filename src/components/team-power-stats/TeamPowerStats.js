@@ -39,26 +39,28 @@ const TeamPowerStats = () => {
 		return (acumulator += parseInt(hero.appearance.weight[1], 10));
 	}, 0);
 
-	const teamHighestPowerstat = Object.entries(teamPowerstatsTotal).reduce(
-		(accumulator, powerstat) => {
-			if (accumulator[1] < powerstat[1]) {
-				return powerstat;
-			}
-			return accumulator;
+	const teamHighestPowerstat = () => {
+		if (Object.keys(teamPowerstatsTotal).length > 0) {
+			return Object.entries(teamPowerstatsTotal).reduce(
+				(accumulator, powerstat) => {
+					if (accumulator[1] < powerstat[1]) {
+						return powerstat;
+					}
+					return accumulator;
+				}
+			);
 		}
-	);
-
-	console.log(teamHighestPowerstat);
+		return ["", ""];
+	};
 
 	return (
 		<div className="team-power-stats__container">
+			{<h3>{`Team category: ${teamHighestPowerstat()[0]}`}</h3>}
 			{powerstats.map(powerstat => (
-				<>
-					<p>{powerstat}</p>
-					<p>{teamPowerstatsTotal[powerstat]}</p>
-				</>
+				<p>{`${powerstat} ${teamPowerstatsTotal[powerstat]}`}</p>
 			))}
-			{<p>{`Height ${teamHeight}`}</p>}
+			{<p>{`Height ${teamHeight} cm.`}</p>}
+			{<p>{`Weight ${teamWeight} Kg.`}</p>}
 		</div>
 	);
 };

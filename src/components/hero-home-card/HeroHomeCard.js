@@ -11,7 +11,24 @@ const HeroHomeCard = hero => {
 		if (teamHeroes.length < 6) {
 			//filter to avoid duplicates
 			if (!teamHeroes.find(heroToAdd => heroToAdd.id === id)) {
-				setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
+				if (hero.biography.alignment === "good") {
+					if (
+						teamHeroes.filter(
+							teamHero => teamHero.biography.alignment === "good"
+						).length < 3
+					) {
+						setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
+					}
+				}
+				if (hero.biography.alignment === "bad") {
+					if (
+						teamHeroes.filter(
+							teamHero => teamHero.biography.alignment === "bad"
+						).length < 3
+					) {
+						setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
+					}
+				}
 			}
 		}
 	};
