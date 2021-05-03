@@ -3,22 +3,26 @@ import { HeroTeamCard, HeroHomeCard, SearchBar } from "../../components";
 import "./Home.scss";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
+import { useAppContext } from "../../context/context";
 
 const Home = () => {
-	const [searchResults, setSearchResults] = useState([]);
+	const { searchResults, teamHeroes } = useAppContext();
 	return (
 		<div className="home__container">
-			<Container spacing={5}>
-				<SearchBar setSearchResults={setSearchResults} />
+			<Container>
+				<Grid container>
+					{teamHeroes.map(heroe => (
+						<Grid item lg={4}>
+							<HeroTeamCard {...heroe} />
+						</Grid>
+					))}
+				</Grid>
+				<SearchBar />
 				{searchResults ? (
-					<Grid container>
+					<Grid container spacing={2}>
 						{searchResults.map(result => (
 							<Grid item lg={3}>
-								<HeroHomeCard
-									key={new Date()}
-									name={result.name}
-									image={result.image.url}
-								/>
+								<HeroHomeCard key={new Date()} {...result} />
 							</Grid>
 						))}
 					</Grid>

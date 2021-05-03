@@ -3,29 +3,57 @@ import "./HeroTeamCard.scss";
 import data from "../../assets/data/apiCallTest";
 import * as Svg from "../../assets/images";
 
-const powerstatsIcons = [
-	Svg.IntelligenceIcon,
-	Svg.StrengthIcon,
-	Svg.SpeedIcon,
-	Svg.DurabilityIcon,
-	Svg.PowerIcon,
-	Svg.CombatIcon,
-];
+const HeroTeamCard = hero => {
+	console.log(hero);
+	const {
+		intelligence,
+		combat,
+		durability,
+		power,
+		speed,
+		strength,
+	} = hero.powerstats;
 
-const HeroTeamCard = () => {
+	const powerstats = [
+		{
+			icon: Svg.IntelligenceIcon,
+			value: intelligence,
+		},
+		{
+			icon: Svg.StrengthIcon,
+			value: strength,
+		},
+		{
+			icon: Svg.SpeedIcon,
+			value: speed,
+		},
+		{
+			icon: Svg.DurabilityIcon,
+			value: durability,
+		},
+		{
+			icon: Svg.PowerIcon,
+			value: power,
+		},
+		{
+			icon: Svg.CombatIcon,
+			value: combat,
+		},
+	];
+
 	return (
 		<div className="card__container">
-			<img src={data.image.url} alt="batman" className="card__image" />
+			<img src={hero.image.url} alt="batman" className="card__image" />
 			<Svg.Wave waveClass="wave-svg" color="#08060E" />
 			<div className="content__container">
-				<p className="hero-name">Batman</p>
+				<p className="hero-name">{hero.name}</p>
 				<div className="icons__container">
-					{powerstatsIcons.map(icon => (
+					{powerstats.map(powerstat => (
 						<div className="flex align-items-center">
 							<div className="icon__container">
-								<Icon IconSvg={icon} />
+								<Icon IconSvg={powerstat.icon} />
 							</div>
-							<p className="card__powerstat-value"> 99</p>
+							<p className="card__powerstat-value">{powerstat.value}</p>
 						</div>
 					))}
 				</div>

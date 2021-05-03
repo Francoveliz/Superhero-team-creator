@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Loupe } from "../../assets/images";
 import "./SearchBar.scss";
 import axios from "axios";
+import { useAppContext } from "../../context/context";
 
-const SearchBar = ({ setSearchResults }) => {
+const SearchBar = () => {
+	const { setSearchResults } = useAppContext();
 	const [heroName, setHeroName] = useState("");
 
 	const handleSubmit = e => {
@@ -13,7 +15,6 @@ const SearchBar = ({ setSearchResults }) => {
 				`https://www.superheroapi.com/api.php/5448321371904802/search/${heroName}`
 			)
 			.then(response => {
-				console.log(response.data.results);
 				setSearchResults(() => response.data.results);
 			})
 			.catch(error => console.error(error));
