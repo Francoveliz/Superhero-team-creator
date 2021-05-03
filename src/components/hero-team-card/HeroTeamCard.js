@@ -1,10 +1,10 @@
 import React from "react";
 import "./HeroTeamCard.scss";
-import data from "../../assets/data/apiCallTest";
 import * as Svg from "../../assets/images";
+import { useAppContext } from "../../context/context";
 
 const HeroTeamCard = hero => {
-	console.log(hero);
+	const { teamHeroes, setTeamHeroes } = useAppContext();
 	const {
 		intelligence,
 		combat,
@@ -41,6 +41,10 @@ const HeroTeamCard = hero => {
 		},
 	];
 
+	const deleteHero = id => {
+		setTeamHeroes(heroes => heroes.filter(hero => !(hero.id === id)));
+	};
+
 	return (
 		<div className="card__container">
 			<img src={hero.image.url} alt="batman" className="card__image" />
@@ -58,7 +62,9 @@ const HeroTeamCard = hero => {
 					))}
 				</div>
 				<div className="flex gap-10px">
-					<button className="btn-primary w-50 ">
+					<button
+						onClick={() => deleteHero(hero.id)}
+						className="btn-primary w-50 ">
 						<Svg.Delete classNameIcon="btn-icon" color="#fffffe" />
 					</button>
 					<button className="btn-primary w-50 ">

@@ -10,7 +10,7 @@ const Home = () => {
 	return (
 		<div className="home__container">
 			<Container>
-				<Grid container>
+				<Grid container spacing={3}>
 					{teamHeroes.map(heroe => (
 						<Grid item lg={4}>
 							<HeroTeamCard {...heroe} />

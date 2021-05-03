@@ -1,8 +1,9 @@
 .card__container {
-	max-width: 300px;
 	display: flex;
 	flex-direction: column;
 	background-color: #08060e;
+	min-width: 100%;
+	border-radius: 20px;
 }
 
 .wave-svg {
@@ -72,7 +73,7 @@
 
 .hero-name {
 	text-align: center;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-weight: bold;
 	margin: 0;
 	margin-bottom: 1rem;
