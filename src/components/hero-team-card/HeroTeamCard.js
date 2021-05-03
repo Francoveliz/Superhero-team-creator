@@ -57,7 +57,9 @@ const HeroTeamCard = hero => {
 							<div className="icon__container">
 								<Icon IconSvg={powerstat.icon} />
 							</div>
-							<p className="card__powerstat-value">{powerstat.value}</p>
+							<p className="card__powerstat-value">
+								{powerstat.value === "null" ? "?" : powerstat.value}
+							</p>
 						</div>
 					))}
 				</div>

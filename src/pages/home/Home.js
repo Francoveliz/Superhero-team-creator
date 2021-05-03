@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { HeroTeamCard, HeroHomeCard, SearchBar } from "../../components";
+import {
+	HeroTeamCard,
+	HeroHomeCard,
+	SearchBar,
+	TeamPowerStats,
+} from "../../components";
 import "./Home.scss";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
@@ -12,11 +17,12 @@ const Home = () => {
 			<Container>
 				<Grid container spacing={3}>
 					{teamHeroes.map(heroe => (
-						<Grid item lg={4}>
+						<Grid item lg={3}>
 							<HeroTeamCard {...heroe} />
 						</Grid>
 					))}
 				</Grid>
+				<TeamPowerStats />
 				<SearchBar />
 				{searchResults ? (
 					<Grid container spacing={2}>

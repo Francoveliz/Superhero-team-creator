@@ -7,7 +7,11 @@ html {
 body {
 	background-color: #16161a;
 	font-family: "Inter", sans-serif;
-	color: #fffffe;
+	color: #fffffe !important;
+}
+
+button {
+	cursor: pointer;
 }
 
 .flex {
@@ -21,11 +25,11 @@ body {
 .btn-primary {
 	border: none;
 	background: none;
-	padding: 0;
-	height: 2rem;
 	background-color: #7f5af0;
 	border-radius: 7px;
 	color: #fffffe;
+	display: block;
+	padding: 10px 24px;
 }
 
 .gap-10px {

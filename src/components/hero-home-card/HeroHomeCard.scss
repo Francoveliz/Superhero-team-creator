@@ -21,29 +21,6 @@
 	z-index: 9999;
 }
 
-.powerstat-icon {
-	width: 1.5rem;
-	height: 1.5rem;
-}
-
-.icon__container {
-	width: 2.5rem;
-	height: 2.5rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #2b2442;
-	border-radius: 50%;
-}
-
-.icons__container {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 20px;
-	grid-auto-rows: minmax(10px, auto);
-	margin-bottom: 2rem;
-}
-
 .powerstat-value {
 	font-size: 1.2rem;
 	margin: 0;
@@ -77,4 +54,9 @@
 	font-weight: bold;
 	margin: 0;
 	margin-bottom: 1rem;
+}
+
+.btn-add-to-team {
+	display: block;
+	padding: 10px 24px;
 }
