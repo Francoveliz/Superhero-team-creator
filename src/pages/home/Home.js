@@ -21,11 +21,14 @@ const Home = () => {
 							<HeroTeamCard {...heroe} />
 						</Grid>
 					))}
+					<Grid item lg={6}>
+						{teamHeroes.length > 0 ? <TeamPowerStats /> : ""}
+					</Grid>
 				</Grid>
-				<TeamPowerStats />
+
 				<SearchBar />
 				{searchResults ? (
-					<Grid container spacing={2}>
+					<Grid container spacing={3}>
 						{searchResults.map(result => (
 							<Grid item lg={3}>
 								<HeroHomeCard key={new Date()} {...result} />

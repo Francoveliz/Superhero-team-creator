@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppContext } from "../../context/context";
-import HeroTeamCard from "../hero-team-card/HeroTeamCard";
+import "./TeamPowerStats.scss";
 
 const TeamPowerStats = () => {
 	const { teamHeroes } = useAppContext();
@@ -57,10 +57,10 @@ const TeamPowerStats = () => {
 		<div className="team-power-stats__container">
 			{<h3>{`Team category: ${teamHighestPowerstat()[0]}`}</h3>}
 			{powerstats.map(powerstat => (
-				<p>{`${powerstat} ${teamPowerstatsTotal[powerstat]}`}</p>
+				<p className="powerstat-text">{`${powerstat} ${teamPowerstatsTotal[powerstat]}`}</p>
 			))}
-			{<p>{`Height ${teamHeight} cm.`}</p>}
-			{<p>{`Weight ${teamWeight} Kg.`}</p>}
+			{<p className="powerstat-text">{`Height ${teamHeight} cm.`}</p>}
+			{<p className="powerstat-text">{`Weight ${teamWeight} Kg.`}</p>}
 		</div>
 	);
 };
