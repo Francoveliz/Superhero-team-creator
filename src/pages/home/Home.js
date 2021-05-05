@@ -9,6 +9,7 @@ import "./Home.scss";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { useAppContext } from "../../context/context";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 	const { searchResults, teamHeroes } = useAppContext();
@@ -25,7 +26,7 @@ const Home = () => {
 						{teamHeroes.length > 0 ? <TeamPowerStats /> : ""}
 					</Grid>
 				</Grid>
-
+				<Link to="/character/70 ">Test</Link>
 				<SearchBar />
 				{searchResults ? (
 					<Grid container spacing={3}>
