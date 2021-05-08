@@ -19,32 +19,21 @@ const Login = () => {
 		setPasswordInputText(() => e.target.value);
 	};
 
-	// At instance level
-	const instance = axios.create({
-		httpsAgent: new https.Agent({
-			rejectUnauthorized: false,
-		}),
-	});
-
-	instance.get("https://something.com/foo");
-
-	// At request level
-	const agent = new https.Agent({
-		rejectUnauthorized: false,
-	});
-
-	// axios.get("https://something.com/foo", { httpsAgent: agent });
-
 	const getToken = async () => {
 		try {
-			const response = await instance.post(
-				"http://challenge-react.alkemy.org/",
-				{
+			const response = await axios.request({
+				url: "http://challenge-react.alkemy.org/",
+				method: "post",
+				data: {
 					email: emailInputText,
 					password: passwordInputText,
 				},
-				{ httpsAgent: agent }
-			);
+				headers: {
+					"Accept-Language": "es-ES,es;q=0.8",
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+			});
 			const token = response.data.token;
 			return token;
 		} catch (error) {
