@@ -23,7 +23,7 @@ const Login = () => {
 	const getToken = async () => {
 		try {
 			const response = await axios.post(
-				"http://challenge-react.alkemy.org/",
+				"/challenge-react.alkemy.org.php/",
 				{
 					email: emailInputText,
 					password: passwordInputText,
