@@ -19,3 +19,5 @@ export { default as Delete } from "./Delete";
 export { default as UserIcon } from "./UserIcon";
 
 export { default as PasswordIcon } from "./PasswordIcon";
+
+export { default as LeftArrow } from "./LeftArrow";
