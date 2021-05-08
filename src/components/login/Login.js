@@ -5,11 +5,15 @@ import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import { useAppContext } from "../../context/context";
 import { UserIcon, PasswordIcon } from "../../assets/images";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 const Login = () => {
 	const [emailInputText, setEmailInputText] = useState("");
 	const [passwordInputText, setPasswordInputText] = useState("");
 	const { setUserIsLogged } = useAppContext();
+	const [openAlert, setOpenAlert] = useState(false);
+	const [alertMessage, setAlertMessage] = useState("");
 
 	const handleChangeEmailInput = e => {
 		setEmailInputText(() => e.target.value);
@@ -17,6 +21,21 @@ const Login = () => {
 
 	const handleChangePasswordInput = e => {
 		setPasswordInputText(() => e.target.value);
+	};
+
+	const Alert = props => {
+		return <MuiAlert elevation={6} variant="filled" {...props} />;
+	};
+
+	const handleOpenAlert = () => {
+		setOpenAlert(true);
+	};
+
+	const handleCloseAlert = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
+		setOpenAlert(() => false);
 	};
 
 	const getToken = async () => {
@@ -30,8 +49,9 @@ const Login = () => {
 			);
 			const token = response.data.token;
 			return token;
-		} catch (error) {
-			return error;
+		} catch {
+			setAlertMessage("Wrong username or password");
+			handleOpenAlert();
 		}
 	};
 
@@ -76,12 +96,20 @@ const Login = () => {
 							/>
 						</div>
 
-						<button className="btn-primary" type="submit">
+						<button className=" btn btn-primary" type="submit">
 							Login
 						</button>
 					</form>
 				</Grid>
 			</Grid>
+			<Snackbar
+				open={openAlert}
+				autoHideDuration={6000}
+				onClose={handleCloseAlert}>
+				<Alert onClose={handleCloseAlert} severity="error">
+					{alertMessage}
+				</Alert>
+			</Snackbar>
 		</Container>
 	);
 };

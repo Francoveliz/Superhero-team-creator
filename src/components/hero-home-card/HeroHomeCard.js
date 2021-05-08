@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HeroHomeCard.scss";
 import * as Svg from "../../assets/images";
 import { useAppContext } from "../../context/context";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 const HeroHomeCard = hero => {
 	const { teamHeroes, setTeamHeroes } = useAppContext();
+	const [openAlert, setOpenAlert] = useState(false);
+	const [alertMessage, setAlertMessage] = useState("");
 
 	const addToTeam = id => {
 		//filter to avoid extra additions
@@ -18,6 +22,9 @@ const HeroHomeCard = hero => {
 						).length < 3
 					) {
 						setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
+					} else {
+						setAlertMessage("You alredy have three superheroes");
+						handleOpenAlert();
 					}
 				}
 				if (hero.biography.alignment === "bad") {
@@ -27,10 +34,34 @@ const HeroHomeCard = hero => {
 						).length < 3
 					) {
 						setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
+					} else {
+						setAlertMessage("You alredy have three villans");
+						handleOpenAlert();
 					}
 				}
+			} else {
+				setAlertMessage("The character is already in the team");
+				handleOpenAlert();
 			}
+		} else {
+			setAlertMessage("The team is full");
+			handleOpenAlert();
 		}
+	};
+
+	const Alert = props => {
+		return <MuiAlert elevation={6} variant="filled" {...props} />;
+	};
+
+	const handleOpenAlert = () => {
+		setOpenAlert(true);
+	};
+
+	const handleCloseAlert = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
+		setOpenAlert(() => false);
 	};
 
 	return (
@@ -45,6 +76,14 @@ const HeroHomeCard = hero => {
 					Add to team
 				</button>
 			</div>
+			<Snackbar
+				open={openAlert}
+				autoHideDuration={6000}
+				onClose={handleCloseAlert}>
+				<Alert onClose={handleCloseAlert} severity="error">
+					{alertMessage}
+				</Alert>
+			</Snackbar>
 		</div>
 	);
 };

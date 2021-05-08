@@ -41,7 +41,11 @@ const Character = ({ match }) => {
 						</Link>
 						<Grid container spacing={3}>
 							<Grid item lg={6}>
-								<img src={characterData.image.url} alt="character image" />
+								<img
+									src={characterData.image.url}
+									className="w-100"
+									alt="character image"
+								/>
 							</Grid>
 							<Grid item lg={6}>
 								<p>{`Weight: ${characterData.appearance.weight[1]}`} </p>
