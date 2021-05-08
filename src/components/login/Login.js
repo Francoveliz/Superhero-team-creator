@@ -33,6 +33,9 @@ const Login = () => {
 					"Content-Type": "application/json",
 					Accept: "application/json",
 				},
+				httpsAgent: new https.Agent({
+					rejectUnauthorized: false,
+				}),
 			});
 			const token = response.data.token;
 			return token;
