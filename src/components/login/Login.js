@@ -4,9 +4,8 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import { useAppContext } from "../../context/context";
-
 import { UserIcon, PasswordIcon } from "../../assets/images";
-
+const https = require("https");
 const Login = () => {
 	const [emailInputText, setEmailInputText] = useState("");
 	const [passwordInputText, setPasswordInputText] = useState("");
@@ -20,14 +19,31 @@ const Login = () => {
 		setPasswordInputText(() => e.target.value);
 	};
 
+	// At instance level
+	const instance = axios.create({
+		httpsAgent: new https.Agent({
+			rejectUnauthorized: false,
+		}),
+	});
+
+	instance.get("https://something.com/foo");
+
+	// At request level
+	const agent = new https.Agent({
+		rejectUnauthorized: false,
+	});
+
+	// axios.get("https://something.com/foo", { httpsAgent: agent });
+
 	const getToken = async () => {
 		try {
-			const response = await axios.post(
-				"/challenge-react.alkemy.org.php/",
+			const response = await instance.post(
+				"http://challenge-react.alkemy.org/",
 				{
 					email: emailInputText,
 					password: passwordInputText,
-				}
+				},
+				{ httpsAgent: agent }
 			);
 			const token = response.data.token;
 			return token;
