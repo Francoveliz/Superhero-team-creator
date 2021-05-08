@@ -1,4 +1,10 @@
-import React, { useState, createContext, useContext } from "react";
+import React, {
+	useState,
+	createContext,
+	useContext,
+	useEffect,
+} from "react";
+import axios from "axios";
 
 export const AppContext = createContext();
 
@@ -6,6 +12,7 @@ export const AppContextProvider = ({ children }) => {
 	const [heroes, setHeroes] = useState([]);
 	const [searchResults, setSearchResults] = useState([]);
 	const [teamHeroes, setTeamHeroes] = useState([]);
+	const [userIsLogged, setUserIsLogged] = useState(false);
 
 	return (
 		<AppContext.Provider
@@ -16,6 +23,8 @@ export const AppContextProvider = ({ children }) => {
 				setSearchResults,
 				teamHeroes,
 				setTeamHeroes,
+				userIsLogged,
+				setUserIsLogged,
 			}}>
 			{children}
 		</AppContext.Provider>

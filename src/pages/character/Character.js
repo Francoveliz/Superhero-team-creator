@@ -3,27 +3,57 @@ import "./Character.scss";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Character = ({ match }) => {
-	const id = match.params.id;
+	const { id } = match.params;
 	const [characterData, setCharacterData] = useState({});
+	const [isLoading, setIsloading] = useState(true);
 
-	const jorge = () => {
-		axios
-			.get(`https://superheroapi.com/api/5448321371904802/${id}`)
-			.then(response => console.log(response.data))
-			.catch(error => console.error(error));
+	//`https://www.superheroapi.com/api.php/5448321371904802/${id}`
+
+	const getData = async url => {
+		const response = await axios.get(url);
+		const data = await response.data;
+		setCharacterData(data);
+		setIsloading(false);
 	};
+
+	useEffect(() => {
+		getData(`https://www.superheroapi.com/api.php/5448321371904802/${id}`);
+	}, []);
 
 	return (
 		<div>
 			<Container>
-				<Grid container>
-					<Grid item lg={6}>
-						<button onClick={jorge}> prueba{id}</button>
-						{/* <img src={characterData.image.url} alt="character image" /> */}
-					</Grid>
-				</Grid>
+				{isLoading ? (
+					<h1>...is Loading</h1>
+				) : (
+					<>
+						<Link to="/">back home</Link>
+						<Grid container>
+							<Grid item lg={6}>
+								<img src={characterData.image.url} alt="character image" />
+							</Grid>
+							<Grid item lg={6}>
+								<p> {`Weight: ${characterData.appearance.weight[1]}`} </p>
+								<p>{`Height: ${characterData.appearance.height[1]}`}</p>
+								<p>
+									{`Full name: ${
+										characterData.biography["full-name"]
+											? characterData.biography["full-name"]
+											: "Unknown"
+									}`}
+								</p>
+								<p>{`Alias: ${characterData.biography.aliases.join(
+									", "
+								)}`}</p>
+								<p>{`Eye color: ${characterData.appearance["eye-color"]}`}</p>
+								<p>{`Workplace: ${characterData.work.base}`}</p>
+							</Grid>
+						</Grid>
+					</>
+				)}
 			</Container>
 		</div>
 	);

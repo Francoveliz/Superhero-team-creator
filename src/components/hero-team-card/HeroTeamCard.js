@@ -2,8 +2,10 @@ import React from "react";
 import "./HeroTeamCard.scss";
 import * as Svg from "../../assets/images";
 import { useAppContext } from "../../context/context";
+import { Link } from "react-router-dom";
 
 const HeroTeamCard = hero => {
+	const { id } = hero;
 	const { teamHeroes, setTeamHeroes } = useAppContext();
 	const {
 		intelligence,
@@ -50,7 +52,7 @@ const HeroTeamCard = hero => {
 			<img src={hero.image.url} alt="batman" className="card__image" />
 			<Svg.Wave waveClass="wave-svg" color="#08060E" />
 			<div className="content__container">
-				<p className="hero-name">{hero.name}</p>
+				<p className="hero-name__card">{hero.name}</p>
 				<div className="icons__container">
 					{powerstats.map(powerstat => (
 						<div className="flex align-items-center">
@@ -65,12 +67,15 @@ const HeroTeamCard = hero => {
 				</div>
 				<div className="flex gap-10px">
 					<button
-						onClick={() => deleteHero(hero.id)}
+						onClick={() => deleteHero(id)}
 						className="btn-primary w-50 ">
 						<Svg.Delete classNameIcon="btn-icon" color="#fffffe" />
 					</button>
-					<button className="btn-primary w-50 ">
-						<Svg.Loupe classNameIcon="btn-icon" color="#fffffe" />
+
+					<button className="btn-primary w-50">
+						<Link to={`/character/${id}`}>
+							<Svg.Loupe classNameIcon="btn-icon" color="#fffffe" />
+						</Link>
 					</button>
 				</div>
 			</div>

@@ -27,7 +27,9 @@ const SearchBar = () => {
 
 	return (
 		<div className="search-bar__container">
-			<form onSubmit={handleSubmit} className="flex align-items-center">
+			<form
+				onSubmit={handleSubmit}
+				className="flex align-items-center w-100">
 				<button className="search-bar__btn" type="submit">
 					<Loupe classNameIcon="search-bar__icon" color="#fffffe" />
 				</button>

@@ -38,7 +38,7 @@ const HeroHomeCard = hero => {
 			<img src={hero.image.url} alt="batman" className="card__image" />
 			<Svg.Wave waveClass="wave-svg" color="#08060E" />
 			<div className="card__content-container">
-				<p className="hero-name">{hero.name}</p>
+				<p className="hero-name__card">{hero.name}</p>
 				<button
 					onClick={() => addToTeam(hero.id)}
 					className="btn-primary text-bold btn-add-to-team">

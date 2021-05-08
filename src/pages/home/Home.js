@@ -16,6 +16,7 @@ const Home = () => {
 	return (
 		<div className="home__container">
 			<Container>
+				<h1 className="text-center">My Team</h1>
 				<Grid container spacing={3}>
 					{teamHeroes.map(heroe => (
 						<Grid item lg={3}>
@@ -26,7 +27,6 @@ const Home = () => {
 						{teamHeroes.length > 0 ? <TeamPowerStats /> : ""}
 					</Grid>
 				</Grid>
-				<Link to="/character/70 ">Test</Link>
 				<SearchBar />
 				{searchResults ? (
 					<Grid container spacing={3}>
