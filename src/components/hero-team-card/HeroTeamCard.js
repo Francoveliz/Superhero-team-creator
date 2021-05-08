@@ -68,11 +68,11 @@ const HeroTeamCard = hero => {
 				<div className="flex gap-10px">
 					<button
 						onClick={() => deleteHero(id)}
-						className="btn-primary w-50 ">
+						className="btn w-50 btn-outline">
 						<Svg.Delete classNameIcon="btn-icon" color="#fffffe" />
 					</button>
 
-					<button className="btn-primary w-50">
+					<button className="btn btn-primary w-50">
 						<Link to={`/character/${id}`}>
 							<Svg.Loupe classNameIcon="btn-icon" color="#fffffe" />
 						</Link>

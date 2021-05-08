@@ -32,7 +32,7 @@ const Character = ({ match }) => {
 				) : (
 					<>
 						<Link
-							className="btn-primary d-block w-fit mb-1 d-flex align-items-center "
+							className="btn btn-primary mb-1 d-flex align-items-center "
 							to="/">
 							<div className="flex h-3rem">
 								<LeftArrow color="#fff" classNameIcon="w-1rem mr-1" />
@@ -44,7 +44,7 @@ const Character = ({ match }) => {
 								<img src={characterData.image.url} alt="character image" />
 							</Grid>
 							<Grid item lg={6}>
-								<p> {`Weight: ${characterData.appearance.weight[1]}`} </p>
+								<p>{`Weight: ${characterData.appearance.weight[1]}`} </p>
 								<p>{`Height: ${characterData.appearance.height[1]}`}</p>
 								<p>
 									{`Full name: ${

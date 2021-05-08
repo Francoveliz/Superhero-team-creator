@@ -41,7 +41,7 @@ const HeroHomeCard = hero => {
 				<p className="hero-name__card">{hero.name}</p>
 				<button
 					onClick={() => addToTeam(hero.id)}
-					className="btn-primary text-bold btn-add-to-team">
+					className="btn btn-primary text-bold btn-add-to-team">
 					Add to team
 				</button>
 			</div>
