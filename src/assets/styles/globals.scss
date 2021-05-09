@@ -16,11 +16,11 @@ button {
 }
 
 .flex {
-	display: flex;
+	display: flex !important;
 }
 
 .align-items-center {
-	align-items: center;
+	align-items: center !important;
 }
 
 .btn-outline {
@@ -67,7 +67,7 @@ button {
 	margin-right: 1rem;
 }
 .m-auto {
-	margin: auto;
+	margin: auto !important;
 }
 .mb-1 {
 	margin-bottom: 1rem;

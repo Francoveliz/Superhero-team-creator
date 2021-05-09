@@ -78,12 +78,11 @@ const HeroTeamCard = hero => {
 						className="btn w-50 btn-outline">
 						<Svg.Delete classNameIcon="btn-icon" color="#fffffe" />
 					</button>
-
-					<button className="btn btn-primary w-50">
-						<Link to={`/character/${id}`}>
-							<Svg.Loupe classNameIcon="btn-icon" color="#fffffe" />
-						</Link>
-					</button>
+					<Link
+						to={`/character/${id}`}
+						className="btn btn-primary w-50 flex align-items-center">
+						<Svg.Loupe classNameIcon="btn-icon m-auto" color="#fffffe" />
+					</Link>
 				</div>
 			</div>
 		</div>
