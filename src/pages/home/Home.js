@@ -19,7 +19,7 @@ const Home = () => {
 				<h1 className="text-center">My Team</h1>
 				<Grid container spacing={3}>
 					{teamHeroes.map(heroe => (
-						<Grid item lg={3}>
+						<Grid key={heroe.id} item lg={3}>
 							<HeroTeamCard {...heroe} />
 						</Grid>
 					))}
@@ -31,8 +31,8 @@ const Home = () => {
 				{searchResults ? (
 					<Grid container spacing={3}>
 						{searchResults.map(result => (
-							<Grid item lg={3}>
-								<HeroHomeCard key={new Date()} {...result} />
+							<Grid key={result.id} item lg={3}>
+								<HeroHomeCard {...result} />
 							</Grid>
 						))}
 					</Grid>

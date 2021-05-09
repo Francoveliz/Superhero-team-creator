@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HeroTeamCard.scss";
 import * as Svg from "../../assets/images";
 import { useAppContext } from "../../context/context";
@@ -6,7 +6,12 @@ import { Link } from "react-router-dom";
 
 const HeroTeamCard = hero => {
 	const { id } = hero;
-	const { teamHeroes, setTeamHeroes } = useAppContext();
+	const {
+		setTeamHeroes,
+		setAlertMessage,
+		handleOpenAlert,
+	} = useAppContext();
+
 	const {
 		intelligence,
 		combat,
@@ -45,6 +50,8 @@ const HeroTeamCard = hero => {
 
 	const deleteHero = id => {
 		setTeamHeroes(heroes => heroes.filter(hero => !(hero.id === id)));
+		setAlertMessage("Deleted character");
+		handleOpenAlert();
 	};
 
 	return (
