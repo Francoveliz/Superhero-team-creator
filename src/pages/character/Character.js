@@ -5,6 +5,7 @@ import Container from "@material-ui/core/Container";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { LeftArrow } from "../../assets/images";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Character = ({ match }) => {
 	const { id } = match.params;
@@ -28,7 +29,7 @@ const Character = ({ match }) => {
 		<div>
 			<Container className="py-1">
 				{isLoading ? (
-					<h1>...is Loading</h1>
+					<CircularProgress className="m-auto flex" />
 				) : (
 					<>
 						<Link
@@ -44,7 +45,7 @@ const Character = ({ match }) => {
 								<img
 									src={characterData.image.url}
 									className="w-100"
-									alt="character image"
+									alt="character"
 								/>
 							</Grid>
 							<Grid item lg={6}>
