@@ -21,24 +21,19 @@ const HeroHomeCard = hero => {
 
 	const isThisCharacterGood = hero => hero.biography.alignment === "good";
 
+	const hasEnoughGoodCharacters = teamHeroes =>
+		teamHeroes.filter(teamHero => teamHero.biography.alignment === "good")
+			.length >= 3;
+
 	const isThisCharacterBad = hero => hero.biography.alignment === "bad";
 
 	const hasEnoughBadCharacters = teamHeroes =>
 		teamHeroes.filter(teamHero => teamHero.biography.alignment === "bad")
 			.length >= 3;
 
-	const hasEnoughGoodCharacters = teamHeroes =>
-		teamHeroes.filter(teamHero => teamHero.biography.alignment === "good")
-			.length >= 3;
-
 	const isTheTeamFull = teamHeroes => teamHeroes.length >= 6;
 
-	console.log(teamHeroes.length);
-	// setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
-	// 	setAlert("Character added");
-
 	const addToTeam = id => {
-		//filter to avoid extra additions
 		if (isTheTeamFull(teamHeroes)) {
 			setAlert("The team is full");
 		} else if (isThisHeroIncluded(id)) {
