@@ -9,49 +9,53 @@ const HeroHomeCard = hero => {
 		setTeamHeroes,
 		handleOpenAlert,
 		setAlertMessage,
-		setSeverity,
 	} = useAppContext();
+
+	const setAlert = message => {
+		setAlertMessage(message);
+		handleOpenAlert();
+	};
+
+	const isThisHeroIncluded = id =>
+		teamHeroes.find(heroToAdd => heroToAdd.id === id);
+
+	const isThisCharacterGood = hero => hero.biography.alignment === "good";
+
+	const isThisCharacterBad = hero => hero.biography.alignment === "bad";
+
+	const hasEnoughBadCharacters = teamHeroes =>
+		teamHeroes.filter(teamHero => teamHero.biography.alignment === "bad")
+			.length >= 3;
+
+	const hasEnoughGoodCharacters = teamHeroes =>
+		teamHeroes.filter(teamHero => teamHero.biography.alignment === "good")
+			.length >= 3;
+
+	const isTheTeamFull = teamHeroes => teamHeroes.length >= 6;
+
+	console.log(teamHeroes.length);
+	// setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
+	// 	setAlert("Character added");
 
 	const addToTeam = id => {
 		//filter to avoid extra additions
-		if (teamHeroes.length < 6) {
-			//filter to avoid duplicates
-			if (!teamHeroes.find(heroToAdd => heroToAdd.id === id)) {
-				if (hero.biography.alignment === "good") {
-					if (
-						teamHeroes.filter(
-							teamHero => teamHero.biography.alignment === "good"
-						).length < 3
-					) {
-						setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
-						setAlertMessage("Character added");
-						handleOpenAlert();
-					} else {
-						setAlertMessage("You alredy have three superheroes");
-						handleOpenAlert();
-					}
-				}
-				if (hero.biography.alignment === "bad") {
-					if (
-						teamHeroes.filter(
-							teamHero => teamHero.biography.alignment === "bad"
-						).length < 3
-					) {
-						setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
-						setAlertMessage("Character added");
-						handleOpenAlert();
-					} else {
-						setAlertMessage("You alredy have three villans");
-						handleOpenAlert();
-					}
-				}
-			} else {
-				setAlertMessage("The character is already in the team");
-				handleOpenAlert();
-			}
+		if (isTheTeamFull(teamHeroes)) {
+			setAlert("The team is full");
+		} else if (isThisHeroIncluded(id)) {
+			setAlert("The character is already in the team");
+		} else if (
+			isThisCharacterGood(hero) &&
+			hasEnoughGoodCharacters(teamHeroes)
+		) {
+			setAlert("You alredy have three superheroes");
+		} else if (
+			isThisCharacterBad(hero) &&
+			hasEnoughBadCharacters(teamHeroes)
+		) {
+			setAlert("You alredy have three villans");
 		} else {
-			setAlertMessage("The team is full");
-			handleOpenAlert();
+			setTeamHeroes(teamHeroes => [...teamHeroes, { ...hero }]);
+			setAlert("Character added");
 		}
 	};
 
