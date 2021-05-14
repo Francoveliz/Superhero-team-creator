@@ -57,11 +57,10 @@ const Login = () => {
 
 	const handleOnSubmit = async e => {
 		e.preventDefault();
+
 		const token = await getToken();
-		if (
-			token ===
-			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJjaGFsbGVuZ2VAYWxrZW15Lm9yZyIsImlhdCI6MTUxNjIzOTAyMn0.ilhFPrG0y7olRHifbjvcMOlH7q2YwlegT0f4aSbryBE"
-		) {
+
+		if (token === process.env.REACT_APP_LOGIN_TOKEN) {
 			localStorage.setItem("token", token);
 			setUserIsLogged(true);
 		}
