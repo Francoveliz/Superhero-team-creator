@@ -1,41 +1,8 @@
-.card__container {
-	display: flex;
-	flex-direction: column;
-	background-color: #08060e;
-	min-width: 100%;
-	border-radius: 20px;
-}
-
-.wave-svg {
-	margin-top: -5rem;
-}
-
-.card__content-container {
-	background-color: #08060e;
-	display: flex;
-	flex-direction: column;
-	padding: 0 1rem 2rem 1rem;
-	color: #fff;
-	margin: auto;
-	margin-top: -1.5rem;
-	z-index: 1;
-}
-
 .powerstat-value {
 	font-size: 1.2rem;
 	margin: 0;
 	padding: 0;
 	margin-left: 8px;
-}
-
-.btn-icon {
-	background-color: none;
-	width: 1.1rem;
-	margin: 0;
-}
-
-.gap {
-	gap: 10px;
 }
 
 .btn-add-to-team {

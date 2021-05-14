@@ -9,7 +9,6 @@ import "./Home.scss";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { useAppContext } from "../../context/context";
-import { Link } from "react-router-dom";
 
 const Home = () => {
 	const { searchResults, teamHeroes } = useAppContext();
@@ -37,7 +36,7 @@ const Home = () => {
 						))}
 					</Grid>
 				) : (
-					<p>no se encontraron resultados</p>
+					<p>No se han encontraron resultados</p>
 				)}
 			</Container>
 		</div>

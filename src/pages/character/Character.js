@@ -12,8 +12,6 @@ const Character = ({ match }) => {
 	const [characterData, setCharacterData] = useState({});
 	const [isLoading, setIsloading] = useState(true);
 
-	//`https://www.superheroapi.com/api.php/5448321371904802/${id}`
-
 	const getData = async url => {
 		const response = await axios.get(url);
 		const data = await response.data;
