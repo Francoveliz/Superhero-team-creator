@@ -16,10 +16,7 @@ function App() {
 	} = useAppContext();
 	const tokenLocalStorage = localStorage.getItem("token");
 	useEffect(() => {
-		if (
-			tokenLocalStorage ===
-			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJjaGFsbGVuZ2VAYWxrZW15Lm9yZyIsImlhdCI6MTUxNjIzOTAyMn0.ilhFPrG0y7olRHifbjvcMOlH7q2YwlegT0f4aSbryBE"
-		) {
+		if (tokenLocalStorage === process.env.REACT_APP_LOGIN_TOKEN) {
 			setUserIsLogged(true);
 		}
 	}, []);
