@@ -1,6 +1,6 @@
 # Superhero team creator
 
-Superhero team creator give you the posibility of create your own personalized team with his own stats.
+Superhero team creator give you the possibility of create your own personalized superheroes team with his own stats.
 
 ## Installation
 
