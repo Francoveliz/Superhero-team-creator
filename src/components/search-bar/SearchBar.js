@@ -12,7 +12,7 @@ const SearchBar = () => {
 		e.preventDefault();
 		axios
 			.get(
-				`https://www.superheroapi.com/api.php/5448321371904802/search/${heroName}`
+				`https://www.superheroapi.com/api.php/${process.env.REACT_APP_SUPERHERO_API_TOKEN}/search/${heroName}`
 			)
 			.then(response => {
 				setSearchResults(() => response.data.results);
