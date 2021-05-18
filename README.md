@@ -15,3 +15,5 @@ npm start
 email: challenge@alkemy.org
 password: react
 ```
+
+> The. env file is filtered on purpose
